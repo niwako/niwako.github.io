@@ -14385,51 +14385,38 @@ div.jp-OutputPrompt {
 <div class="slides"><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Pipes!">Pipes!<a class="anchor-link" href="#Pipes!">&#182;</a></h1>
+<h1 id="Usefulness-of-.pipe()">Usefulness of <code>.pipe()</code><a class="anchor-link" href="#Usefulness-of-.pipe()">&#182;</a></h1><p>Niwako Sugimura, Ph.D., Shad Sharma, Houda Aynaou</p>
+
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Some codes</span>
+</div><aside class="notes">
+
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>My name is Niwako, and I worked with Shad and Houda on this Datathon. Today, we’re going to talk about the <code>.pipe()</code> method, which we used to help keep our code tidy.</p>
+
+</div>
+</div>
+</aside></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Challenges-in-working-on-an-ML-project">Challenges in working on an ML project<a class="anchor-link" href="#Challenges-in-working-on-an-ML-project">&#182;</a></h1><ul>
+<li>Notebooks get messy with lots of data exploration and preprocessing</li>
+<li>Can be hard to keep track of transformation applied to dataframe</li>
+<li>Have to ensure that same sets of changes are applied to train, test, and unlabeled sets</li>
+</ul>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Definition">Definition<a class="anchor-link" href="#Definition">&#182;</a></h1><div class="highlight"><pre><span></span><span class="n">DataFrame</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h1><ul>
-<li>What seems to be the problem?<ul>
-<li>Need to pre-process data</li>
-<li>Need to apply same transformations to train, test, and validation</li>
-<li>Need to easily see what transformations have been applied</li>
-<li>Would like it to be readable</li>
-</ul>
-</li>
-<li>What does pipe do?<ul>
-<li>Applies a function to the data frame</li>
-</ul>
-</li>
-<li>How does it help?<ul>
-<li>Makes it possible for us to chain multiple functions</li>
-<li>Makes it easy to see the sequence of pre-processing steps</li>
-<li>Ensures that the same pre-processing steps are used on all three datasets</li>
-<li>With some care, it does not pollute test and validation with knowledge from train</li>
-</ul>
-</li>
+<ul>
+<li>Takes a function whose first argument is the dataframe</li>
+<li>Transforms the dataframe in some way</li>
+<li>Returns the transformed dataframe</li>
 </ul>
 
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Slide-2!">Slide 2!<a class="anchor-link" href="#Slide-2!">&#182;</a></h1>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -14437,30 +14424,32 @@ div.jp-OutputPrompt {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Some other codes</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Technical-Aspects">Technical Aspects<a class="anchor-link" href="#Technical-Aspects">&#182;</a></h1>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">transformed_df</span> <span class="o">=</span> <span class="n">df</span> <span class="c1"># Transform df somehow</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+    <span class="n">transformed_df</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">transformed_df</span>
+</pre></div>
 
-<span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">preprocess</span><span class="p">)</span> <span class="c1"># The result is the transformed data frame.</span>
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Usage">Usage<a class="anchor-link" href="#Usage">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transformed_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">some_other_func</span><span class="p">,</span> <span class="n">other_args</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">yet_another_func</span><span class="p">,</span> <span class="n">yet_more_args</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14479,13 +14468,245 @@ div.jp-OutputPrompt {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="k">pass</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">FEATURES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;column 1&quot;</span><span class="p">,</span> <span class="s2">&quot;column 2&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">one_hot_encode</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">categoricals</span><span class="p">):</span>
-    <span class="k">pass</span>
 
-<span class="k">def</span> <span class="nf">impute_</span>
+<span class="k">def</span> <span class="nf">drop_non_features</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">FEATURES</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Stateful-functions-for-.pipe()">Stateful functions for <code>.pipe()</code><a class="anchor-link" href="#Stateful-functions-for-.pipe()">&#182;</a></h1>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">NormalizeNumerical</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">is_train</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_train</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">NUMERICAL_COLUMNS</span><span class="p">])</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">NUMERICAL_COLUMNS</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">NUMERICAL_COLUMNS</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="n">normalize_numerical</span> <span class="o">=</span> <span class="n">NormalizeNumerical</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">StandardizeNumerical</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">is_train</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">is_train</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">NUMERICAL_COLUMNS</span><span class="p">])</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">NUMERICAL_COLUMNS</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">NUMERICAL_COLUMNS</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="n">standardize_numerical</span> <span class="o">=</span> <span class="n">StandardizeNumerical</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Fitting,-Testing,-and-Predicting">Fitting, Testing, and Predicting<a class="anchor-link" href="#Fitting,-Testing,-and-Predicting">&#182;</a></h1>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">is_train</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">drop_non_features</span><span class="p">)</span>
+        <span class="c1"># .pipe(normalize_numerical, is_train=is_train)</span>
+        <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">standardize_numerical</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Fit">Fit<a class="anchor-link" href="#Fit">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span> <span class="c1"># Using whatever model we want</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Test">Test<a class="anchor-link" href="#Test">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Predict">Predict<a class="anchor-link" href="#Predict">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_unlabeled</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_unlabeled</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Example-from-our-notebook-for-the-Datathon">Example from our notebook for the Datathon<a class="anchor-link" href="#Example-from-our-notebook-for-the-Datathon">&#182;</a></h1>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">is_train</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">drop_non_features</span><span class="p">)</span>
+        <span class="c1"># .pipe(normalize_numerical, is_train=is_train)</span>
+        <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">standardize_numerical</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+        <span class="c1"># .pipe(replace_missing_numerical, fill=-999)</span>
+        <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">impute_missing_numerical</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">onehot_encode_categorical</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Benefits-of-using-.pipe()">Benefits of using <code>.pipe()</code><a class="anchor-link" href="#Benefits-of-using-.pipe()">&#182;</a></h2><ul>
+<li>Keep the original dataframe intact,</li>
+<li>Easily select and switch around pre-processing steps,</li>
+<li>Try different classifiers more easily.</li>
+</ul>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="How-is-this-different-from-just-using-functions?">How is this different from just using functions?<a class="anchor-link" href="#How-is-this-different-from-just-using-functions?">&#182;</a></h1>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The main difference is that you either need to use a temporary variable:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">is_train</span><span class="p">):</span>
+    <span class="n">tdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">tdf</span> <span class="o">=</span> <span class="n">drop_non_features</span><span class="p">(</span><span class="n">tdf</span><span class="p">)</span>
+    <span class="c1"># tdf = normalize_numerical(tdf, is_train=is_train)</span>
+    <span class="n">tdf</span> <span class="o">=</span> <span class="n">standardize_numerical</span><span class="p">(</span><span class="n">tdf</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+    <span class="c1"># tdf = replace_missing_numerical(tdf, fill=-999)</span>
+    <span class="n">tdf</span> <span class="o">=</span> <span class="n">impute_missing_numerical</span><span class="p">(</span><span class="n">tdf</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+    <span class="n">tdf</span> <span class="o">=</span> <span class="n">onehot_encode_categorical</span><span class="p">(</span><span class="n">tdf</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tdf</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Or you have some ugly function chaining:</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">is_train</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">onehot_encode_categorical</span><span class="p">(</span>
+        <span class="n">impute_missing_numerical</span><span class="p">(</span>
+            <span class="n">standardize_numerical</span><span class="p">(</span><span class="n">drop_non_features</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">),</span>
+            <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">,</span>
+        <span class="p">),</span>
+        <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">,</span>
+    <span class="p">)</span>
 </pre></div>
 
      </div>
